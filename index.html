@@ -5,70 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Путь к Себе — Самопознание и Развитие</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+:root{
+--white:#ffffff;
+--blue:#0084ff;
+--cyan:#00f2ff;
+--dark:#0a2540;
+--soft:#f4f9ff;
+}
+
+*{box-sizing:border-box}
+
 body{
 margin:0;
-font-family: 'Segoe UI', Arial, sans-serif;
-background:linear-gradient(180deg,#eef6ff,#ffffff);
-color:#1f2d3d;
+font-family:'Inter',sans-serif;
+background:linear-gradient(180deg,#ffffff,#f4f9ff);
+color:var(--dark);
+scroll-behavior:smooth;
 }
 
-header{
-background:linear-gradient(120deg,#1e73ff,#5bbcff);
-color:white;
-padding:60px 20px;
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #e6f0ff;
+z-index:1000;
+}
+
+nav .inner{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 20px;
+}
+
+nav a{
+text-decoration:none;
+color:var(--dark);
+margin-left:22px;
+font-weight:600;
+}
+
+nav a:hover{color:var(--blue)}
+
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:120px 20px 80px;
+background:
+radial-gradient(circle at 20% 20%, rgba(0,242,255,0.25), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(0,132,255,0.25), transparent 40%),
+linear-gradient(120deg,#ffffff,#f4f9ff);
 }
 
-header h1{
+.hero h1{
+font-size:56px;
 margin:0;
-font-size:42px;
+background:linear-gradient(90deg,var(--blue),var(--cyan));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-header p{
-font-size:18px;
-opacity:0.95;
-max-width:700px;
-margin:15px auto 0;
+.hero p{
+max-width:750px;
+font-size:20px;
+margin-top:20px;
+line-height:1.6;
 }
 
+.hero button{
+margin-top:35px;
+padding:16px 28px;
+font-size:16px;
+border:none;
+border-radius:999px;
+background:linear-gradient(90deg,var(--blue),var(--cyan));
+color:white;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,132,255,0.3);
+}
+
+.hero button:hover{transform:translateY(-2px)}
+
+/* CONTENT */
 .container{
 max-width:1000px;
 margin:auto;
-padding:40px 20px;
+padding:40px 20px 80px;
 }
 
+.section{margin-top:70px}
+
 .card{
-background:white;
-padding:30px;
-margin-bottom:25px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
+background:var(--white);
+padding:34px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,132,255,0.08);
+margin-bottom:28px;
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.card.visible{
+opacity:1;
+transform:translateY(0);
 }
 
 h2{
-color:#1e73ff;
+color:var(--blue);
 margin-top:0;
 }
 
-ul{
-padding-left:20px;
+.highlight{
+background:#eef7ff;
+padding:18px;
+border-left:5px solid var(--blue);
+border-radius:10px;
+margin:16px 0;
 }
-
-li{margin:8px 0;}
 
 footer{
 text-align:center;
-padding:40px 20px;
-color:#6b7c93;
-}
-
-.highlight{
-background:#f0f6ff;
-padding:15px 18px;
-border-left:4px solid #1e73ff;
-border-radius:8px;
-margin:15px 0;
+padding:50px 20px;
+color:#6c7a89;
 }
 
 </style>
@@ -76,73 +148,79 @@ margin:15px 0;
 
 <body>
 
-<header>
+<nav>
+<div class="inner">
+<div><b>Путь к Себе</b></div>
+<div>
+<a href="#person">Личность</a>
+<a href="#self">Самопознание</a>
+<a href="#growth">Саморазвитие</a>
+<a href="#tools">Практикум</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
 <h1>Путь к Себе</h1>
-<p>Самопознание — это начало осознанной жизни. Понимая себя, человек получает возможность управлять своим развитием, ставить истинные цели и строить собственное будущее.</p>
-</header>
+<p>Понимание себя — это отправная точка осознанной жизни. Когда человек узнаёт свои ценности, способности и цели, он начинает управлять своим развитием и строить собственное будущее.</p>
+<button onclick="document.querySelector('#person').scrollIntoView({behavior:'smooth'})">Начать путь</button>
+</section>
 
 <div class="container">
 
+<div id="person" class="section">
 <div class="card">
 <h2>Что такое личность</h2>
-<p>Личность — это человек как субъект сознательной деятельности, обладающий социально значимыми качествами, которые проявляются в его жизни и взаимодействии с обществом.</p>
-<p>Личность не даётся человеку готовой — она формируется в процессе социализации, опыта и внутренней работы над собой.</p>
-<div class="highlight">
-Зрелая личность отличается самосознанием — способностью понимать свои мысли, мотивы, поступки и оценивать себя.
+<p>Личность — это человек как субъект сознательной деятельности, обладающий социально значимыми качествами и способный осмысленно действовать в обществе.</p>
+<p>Она формируется в процессе социализации, опыта и внутренней работы над собой.</p>
+<div class="highlight">Зрелая личность обладает самосознанием — способностью понимать свои мысли, мотивы и поступки.</div>
+<p>Личность — динамичный процесс роста, а самопознание выступает его главным двигателем.</p>
 </div>
-<p>Личность — это не статичное состояние, а постоянный процесс роста. Самопознание становится двигателем этого развития.</p>
 </div>
 
+<div id="self" class="section">
 <div class="card">
 <h2>Самопознание и его этапы</h2>
-<p>Самопознание — это процесс изучения человеком своих психологических и физических особенностей, ценностей, целей и возможностей.</p>
-
-<h3>Этапы самопознания:</h3>
+<p>Самопознание — это процесс изучения человеком своего внутреннего мира, особенностей, ценностей и возможностей.</p>
 <ul>
-<li><b>Первичное:</b> человек узнаёт себя через оценки окружающих — родителей, учителей, друзей.</li>
-<li><b>Кризисное:</b> появляются сомнения и противоречия, возникает необходимость искать собственные ответы.</li>
-<li><b>Углублённое:</b> начинается сознательное исследование себя через рефлексию, анализ опыта и специальные техники.</li>
+<li><b>Первичное:</b> понимание себя через оценки окружающих.</li>
+<li><b>Кризисное:</b> появление сомнений и самостоятельный поиск ответов.</li>
+<li><b>Углублённое:</b> осознанное исследование себя через рефлексию и анализ опыта.</li>
 </ul>
-
-<div class="highlight">
-Самопознание помогает увидеть свои сильные стороны, понять ограничения и обнаружить внутренний потенциал.
+<div class="highlight">Понимание себя открывает путь к осознанным решениям и личностному росту.</div>
 </div>
 </div>
 
+<div id="growth" class="section">
 <div class="card">
 <h2>Саморазвитие как продолжение самопознания</h2>
-<p>Саморазвитие — это сознательная деятельность человека, направленная на развитие качеств, навыков и способностей на основе понимания себя.</p>
-
+<p>Саморазвитие — это сознательная деятельность человека по развитию своих качеств, навыков и способностей на основе знания о себе.</p>
 <ul>
-<li><b>Диагностика:</b> самопознание показывает сильные стороны и зоны роста.</li>
-<li><b>Постановка целей:</b> только понимая себя, можно выбрать действительно свои цели.</li>
-<li><b>Обратная связь:</b> в процессе развития человек снова анализирует себя и корректирует путь.</li>
+<li><b>Диагностика:</b> понимание сильных сторон и зон роста.</li>
+<li><b>Цели:</b> выбор истинных целей, соответствующих личности.</li>
+<li><b>Обратная связь:</b> анализ прогресса и корректировка пути.</li>
 </ul>
-
-<div class="highlight">
-Самопознание и саморазвитие образуют непрерывную спираль: познаю себя → развиваюсь → снова узнаю себя глубже → двигаюсь дальше.
+<div class="highlight">Самопознание и саморазвитие образуют спираль роста: узнаю себя → развиваюсь → открываю новые возможности → двигаюсь дальше.</div>
 </div>
 </div>
 
+<div id="tools" class="section">
 <div class="card">
 <h2>Практикум: инструменты для самопознания и развития</h2>
-
 <h3>Дневник или блог</h3>
-<p>Регулярные записи мыслей, переживаний и достижений помогают структурировать внутренний мир и отслеживать изменения.</p>
+<p>Помогает анализировать мысли, фиксировать опыт и отслеживать личный рост.</p>
 
 <h3>Колесо жизненного баланса</h3>
-<p>Оцените по шкале разные сферы жизни: здоровье, учёба, семья, друзья, развитие. Это помогает увидеть, чему нужно уделить больше внимания.</p>
+<p>Позволяет оценить ключевые сферы жизни и определить приоритеты развития.</p>
 
-<h3>Чтение качественной литературы</h3>
-<p>Художественные произведения, биографии и научно‑популярные книги расширяют кругозор и помогают лучше понять себя и людей.</p>
+<h3>Чтение литературы</h3>
+<p>Расширяет кругозор, помогает лучше понимать себя и людей.</p>
 
 <h3>Метод «5 почему»</h3>
-<p>Задавайте себе вопрос «Почему?» несколько раз подряд, чтобы добраться до истинной причины проблемы или эмоции.</p>
+<p>Позволяет найти истинные причины проблем и эмоций.</p>
 
-<div class="highlight">
-Маленькие шаги, сделанные сегодня, формируют личность завтрашнего дня. Работа над собой — самая надёжная инвестиция.
+<div class="highlight">Каждый шаг в понимании себя — это шаг к сильной, уверенной и осознанной личности.</div>
 </div>
-
 </div>
 
 </div>
@@ -150,6 +228,18 @@ margin:15px 0;
 <footer>
 Школьный проект «Путь к Себе: Самопознание и Развитие»
 </footer>
+
+<script>
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('visible');
+}
+});
+},{threshold:.15});
+cards.forEach(c=>observer.observe(c));
+</script>
 
 </body>
 </html>
