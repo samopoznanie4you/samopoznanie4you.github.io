@@ -4,74 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Путь к Себе — Самопознание и Развитие</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --white:#ffffff;
 --blue:#0084ff;
 --cyan:#00f2ff;
---dark:#0a2540;
+--text:#0a2540;
+--muted:#5b6b7c;
+--border:#eaf2ff;
 --soft:#f4f9ff;
+--radius:20px;
 }
 
 *{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:'Inter',sans-serif;
+font-family:Inter,system-ui,sans-serif;
+color:var(--text);
 background:linear-gradient(180deg,#ffffff,#f4f9ff);
-color:var(--dark);
-scroll-behavior:smooth;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 24px;
 }
 
 /* NAV */
 nav{
 position:fixed;
-top:0;
-width:100%;
-background:rgba(255,255,255,0.9);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #e6f0ff;
+top:0;left:0;right:0;
+background:rgba(255,255,255,.85);
+backdrop-filter:blur(12px);
+border-bottom:1px solid var(--border);
 z-index:1000;
 }
 
-nav .inner{
-max-width:1100px;
-margin:auto;
+nav .row{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 20px;
+padding:16px 0;
 }
+
+nav .logo{font-weight:700}
 
 nav a{
 text-decoration:none;
-color:var(--dark);
-margin-left:22px;
-font-weight:600;
+color:var(--text);
+margin-left:28px;
+font-weight:500;
 }
 
 nav a:hover{color:var(--blue)}
 
 /* HERO */
 .hero{
-min-height:100vh;
+padding-top:120px;
+min-height:92vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
-padding:120px 20px 80px;
-background:
-radial-gradient(circle at 20% 20%, rgba(0,242,255,0.25), transparent 40%),
-radial-gradient(circle at 80% 30%, rgba(0,132,255,0.25), transparent 40%),
-linear-gradient(120deg,#ffffff,#f4f9ff);
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:48px;
+align-items:center;
 }
 
 .hero h1{
-font-size:56px;
+font-family:Sora,Inter,sans-serif;
+font-size:64px;
+line-height:1.05;
 margin:0;
 background:linear-gradient(90deg,var(--blue),var(--cyan));
 -webkit-background-clip:text;
@@ -79,151 +87,193 @@ background:linear-gradient(90deg,var(--blue),var(--cyan));
 }
 
 .hero p{
-max-width:750px;
 font-size:20px;
-margin-top:20px;
 line-height:1.6;
+color:var(--muted);
+margin:24px 0 32px;
+max-width:560px;
 }
 
-.hero button{
-margin-top:35px;
+.btn{
 padding:16px 28px;
-font-size:16px;
-border:none;
 border-radius:999px;
+border:none;
+font-weight:600;
+cursor:pointer;
+transition:.25s;
+}
+
+.btn-primary{
 background:linear-gradient(90deg,var(--blue),var(--cyan));
 color:white;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(0,132,255,0.3);
+box-shadow:0 12px 30px rgba(0,132,255,.35);
 }
 
-.hero button:hover{transform:translateY(-2px)}
+.btn-primary:hover{transform:translateY(-2px)}
 
-/* CONTENT */
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px 80px;
+.hero-visual{
+height:420px;
+border-radius:28px;
+background:
+radial-gradient(circle at 30% 30%, rgba(0,242,255,.35), transparent 40%),
+radial-gradient(circle at 70% 60%, rgba(0,132,255,.35), transparent 45%),
+#eef5ff;
+box-shadow:0 30px 80px rgba(0,132,255,.15);
 }
 
-.section{margin-top:70px}
+/* SECTIONS */
+section{padding:96px 0}
+
+.section-title{
+font-family:Sora,Inter;
+font-size:40px;
+margin-bottom:32px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
 
 .card{
 background:var(--white);
-padding:34px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,132,255,0.08);
-margin-bottom:28px;
+padding:32px;
+border-radius:var(--radius);
+border:1px solid var(--border);
+box-shadow:0 20px 40px rgba(0,132,255,.08);
+transition:.35s;
 opacity:0;
 transform:translateY(40px);
-transition:all .8s ease;
 }
 
 .card.visible{
 opacity:1;
-transform:translateY(0);
+transform:none;
 }
 
-h2{
-color:var(--blue);
-margin-top:0;
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 60px rgba(0,132,255,.15);
 }
 
-.highlight{
-background:#eef7ff;
-padding:18px;
-border-left:5px solid var(--blue);
-border-radius:10px;
-margin:16px 0;
-}
+.card h3{margin-top:0}
 
-footer{
+.card p{color:var(--muted);line-height:1.6}
+
+/* CTA */
+.cta{
 text-align:center;
-padding:50px 20px;
-color:#6c7a89;
+background:linear-gradient(90deg,#0084ff,#00f2ff);
+color:white;
+border-radius:32px;
+padding:64px 32px;
+box-shadow:0 30px 70px rgba(0,132,255,.35);
 }
 
+.cta h2{margin-top:0;font-size:42px}
+
+/* FOOTER */
+footer{
+padding:48px 0;
+text-align:center;
+color:var(--muted);
+}
+
+/* ADAPTIVE */
+@media(max-width:1000px){
+.hero-grid{grid-template-columns:1fr}
+.hero h1{font-size:48px}
+.grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:640px){
+section{padding:72px 0}
+.hero h1{font-size:38px}
+.grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-<div class="inner">
-<div><b>Путь к Себе</b></div>
+<div class="container row">
+<div class="logo">Путь к Себе</div>
 <div>
 <a href="#person">Личность</a>
 <a href="#self">Самопознание</a>
-<a href="#growth">Саморазвитие</a>
+<a href="#growth">Развитие</a>
 <a href="#tools">Практикум</a>
 </div>
 </div>
 </nav>
 
-<section class="hero">
-<h1>Путь к Себе</h1>
-<p>Понимание себя — это отправная точка осознанной жизни. Когда человек узнаёт свои ценности, способности и цели, он начинает управлять своим развитием и строить собственное будущее.</p>
-<button onclick="document.querySelector('#person').scrollIntoView({behavior:'smooth'})">Начать путь</button>
+<div class="container hero">
+<div class="hero-grid">
+<div>
+<h1>Самопознание —
+начало осознанной личности</h1>
+<p>Понимание себя открывает путь к развитию, целям и внутренней уверенности. Этот проект собрал ключевые идеи и практические инструменты, которые помогают начать путь к себе уже сегодня.</p>
+<button class="btn btn-primary" onclick="document.querySelector('#person').scrollIntoView({behavior:'smooth'})">Начать путь</button>
+</div>
+<div class="hero-visual"></div>
+</div>
+</div>
+
+<section id="person">
+<div class="container">
+<h2 class="section-title">Что такое личность</h2>
+<div class="grid">
+<div class="card"><h3>Сознательная деятельность</h3><p>Личность — это человек как субъект осознанных решений и поступков.</p></div>
+<div class="card"><h3>Формируется в обществе</h3><p>Она развивается через опыт, обучение и взаимодействие с людьми.</p></div>
+<div class="card"><h3>Самосознание</h3><p>Зрелая личность понимает свои мотивы, ценности и цели.</p></div>
+</div>
+</div>
 </section>
 
+<section id="self">
 <div class="container">
-
-<div id="person" class="section">
-<div class="card">
-<h2>Что такое личность</h2>
-<p>Личность — это человек как субъект сознательной деятельности, обладающий социально значимыми качествами и способный осмысленно действовать в обществе.</p>
-<p>Она формируется в процессе социализации, опыта и внутренней работы над собой.</p>
-<div class="highlight">Зрелая личность обладает самосознанием — способностью понимать свои мысли, мотивы и поступки.</div>
-<p>Личность — динамичный процесс роста, а самопознание выступает его главным двигателем.</p>
+<h2 class="section-title">Самопознание</h2>
+<div class="grid">
+<div class="card"><h3>Первичное</h3><p>Понимание себя через мнение окружающих.</p></div>
+<div class="card"><h3>Кризисное</h3><p>Поиск собственных ответов и сомнения.</p></div>
+<div class="card"><h3>Углублённое</h3><p>Осознанная рефлексия и анализ внутреннего мира.</p></div>
 </div>
 </div>
+</section>
 
-<div id="self" class="section">
-<div class="card">
-<h2>Самопознание и его этапы</h2>
-<p>Самопознание — это процесс изучения человеком своего внутреннего мира, особенностей, ценностей и возможностей.</p>
-<ul>
-<li><b>Первичное:</b> понимание себя через оценки окружающих.</li>
-<li><b>Кризисное:</b> появление сомнений и самостоятельный поиск ответов.</li>
-<li><b>Углублённое:</b> осознанное исследование себя через рефлексию и анализ опыта.</li>
-</ul>
-<div class="highlight">Понимание себя открывает путь к осознанным решениям и личностному росту.</div>
+<section id="growth">
+<div class="container">
+<h2 class="section-title">Саморазвитие</h2>
+<div class="grid">
+<div class="card"><h3>Диагностика</h3><p>Понимание сильных сторон и зон роста.</p></div>
+<div class="card"><h3>Цели</h3><p>Осознанный выбор жизненного направления.</p></div>
+<div class="card"><h3>Обратная связь</h3><p>Оценка прогресса и корректировка пути.</p></div>
 </div>
 </div>
+</section>
 
-<div id="growth" class="section">
-<div class="card">
-<h2>Саморазвитие как продолжение самопознания</h2>
-<p>Саморазвитие — это сознательная деятельность человека по развитию своих качеств, навыков и способностей на основе знания о себе.</p>
-<ul>
-<li><b>Диагностика:</b> понимание сильных сторон и зон роста.</li>
-<li><b>Цели:</b> выбор истинных целей, соответствующих личности.</li>
-<li><b>Обратная связь:</b> анализ прогресса и корректировка пути.</li>
-</ul>
-<div class="highlight">Самопознание и саморазвитие образуют спираль роста: узнаю себя → развиваюсь → открываю новые возможности → двигаюсь дальше.</div>
+<section id="tools">
+<div class="container">
+<h2 class="section-title">Практикум</h2>
+<div class="grid">
+<div class="card"><h3>Дневник</h3><p>Фиксация мыслей и анализ личного опыта.</p></div>
+<div class="card"><h3>Колесо баланса</h3><p>Оценка сфер жизни и расстановка приоритетов.</p></div>
+<div class="card"><h3>Метод 5 почему</h3><p>Поиск истинных причин проблем и эмоций.</p></div>
 </div>
 </div>
+</section>
 
-<div id="tools" class="section">
-<div class="card">
-<h2>Практикум: инструменты для самопознания и развития</h2>
-<h3>Дневник или блог</h3>
-<p>Помогает анализировать мысли, фиксировать опыт и отслеживать личный рост.</p>
-
-<h3>Колесо жизненного баланса</h3>
-<p>Позволяет оценить ключевые сферы жизни и определить приоритеты развития.</p>
-
-<h3>Чтение литературы</h3>
-<p>Расширяет кругозор, помогает лучше понимать себя и людей.</p>
-
-<h3>Метод «5 почему»</h3>
-<p>Позволяет найти истинные причины проблем и эмоций.</p>
-
-<div class="highlight">Каждый шаг в понимании себя — это шаг к сильной, уверенной и осознанной личности.</div>
+<section>
+<div class="container">
+<div class="cta">
+<h2>Начни путь к себе сегодня</h2>
+<p>Осознанность начинается с одного шага — понимания себя.</p>
+<button class="btn" style="background:white;color:#0084ff;margin-top:18px">Начать сейчас</button>
 </div>
 </div>
-
-</div>
+</section>
 
 <footer>
 Школьный проект «Путь к Себе: Самопознание и Развитие»
@@ -231,14 +281,10 @@ color:#6c7a89;
 
 <script>
 const cards=document.querySelectorAll('.card');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add('visible');
-}
-});
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})
 },{threshold:.15});
-cards.forEach(c=>observer.observe(c));
+cards.forEach(c=>obs.observe(c));
 </script>
 
 </body>
