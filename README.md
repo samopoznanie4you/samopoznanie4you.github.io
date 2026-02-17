@@ -1,0 +1,1 @@
+# samopoznanie4you.github.io
