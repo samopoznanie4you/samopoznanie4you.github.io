@@ -247,6 +247,58 @@ grid-column:auto;
 }
 }
 
+/* ДИАГРАММЫ */
+.charts-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:40px;
+}
+
+.chart-card{
+background:var(--white);
+border-radius:var(--radius);
+padding:20px;
+text-align:center;
+border:1px solid var(--border);
+box-shadow:0 20px 40px rgba(0,132,255,.08);
+transition:.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.chart-card.visible{
+opacity:1;
+transform:none;
+}
+
+.chart-card:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 60px rgba(0,132,255,.15);
+}
+
+.chart-card img{
+width:100%;
+border-radius:14px;
+margin-bottom:12px;
+}
+
+.chart-card p{
+font-size:15px;
+color:var(--muted);
+}
+
+.charts-grid .chart-card:nth-child(4){
+grid-column:1/2;
+justify-self:end;
+}
+
+.charts-grid .chart-card:nth-child(5){
+grid-column:3/4;
+justify-self:start;
+}
+
+
 </style>
 </head>
 
@@ -260,7 +312,7 @@ grid-column:auto;
 <p>Начни с самой базы.</p>
 <button class="btn btn-primary" onclick="startSite()">Начать</button>
 </div>
-</div>
+</div>	
 
 <!-- ОСНОВНОЙ САЙТ -->
 <div id="main">
@@ -518,11 +570,48 @@ src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1600&au
 </div>
 </section>
 
+<section id="survey">
+<div class="container">
+
+<h2 class="section-title">Результаты анкетирования</h2>
+
+<div class="charts-grid">
+
+<div class="chart-card">
+<img src="1.jpg" alt="">
+<p>Интересовались ли вы самопознанием?</p>
+</div>
+
+<div class="chart-card">
+<img src="2.jpg" alt="">
+<p>Знаете ли вы методы самопознания?</p>
+</div>
+
+<div class="chart-card">
+<img src="3.jpg" alt="">
+<p>Считаете ли самопознание важным?</p>
+</div>
+
+<div class="chart-card">
+<img src="4.jpg" alt="">
+<p>Хотите лучше понимать себя?</p>
+</div>
+
+<div class="chart-card">
+<img src="5.jpg" alt="">
+<p>Используете ли практики?</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
 <footer>
 <div class="footer-wrap">
 <div>Школьный проект «Путь к Себе: Самопознание и Развитие»</div>
 <div>Сделал ученик 10А класса Гуляев Евгений</div>
-<img src="qr.png">
+<img src="qr.jpg">
 </div>
 </footer>
 
@@ -542,6 +631,10 @@ cards.forEach(c=>obs.observe(c));
 document.querySelectorAll('#tools .card').forEach(card=>{
 card.addEventListener('click',()=>card.classList.toggle('open'));
 });
+
+const charts = document.querySelectorAll('.chart-card');
+
+charts.forEach(c => obs.observe(c));
 </script>
 
 </body>
